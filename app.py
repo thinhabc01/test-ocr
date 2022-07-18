@@ -72,10 +72,7 @@ def to_text(img_list: list) -> dict:
         img = cv2.medianBlur(img,9)
             
         # To text
-        output = pytesseract.image_to_string(img, config="-c tessedit"
-                                               "_char_whitelist=1234567890"
-                                               " --psm 6"
-                                               " ").strip()
+        output = pytesseract.image_to_string(img, lang='eng').strip()
 
         # Remove remove non-ASCII characters but leave periods and spaces
         output = output.encode('ascii', errors='ignore').decode() 
