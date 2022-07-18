@@ -64,21 +64,18 @@ def to_text(img_list: list) -> dict:
         filename = xfile.split('.')[0]
 
         # Save as a PDF file
-        try:
-            # Read image
-            img = cv2.imread(os.path.join(UPLOAD_FOLDER, xfile))
+        # Read image
+        img = cv2.imread(os.path.join(UPLOAD_FOLDER, xfile))
 
-            img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             
-            # To text
-            output = pytesseract.image_to_string(img, lang='eng').strip()
+        # To text
+        output = pytesseract.image_to_string(img, lang='eng').strip()
 
-            # Remove remove non-ASCII characters but leave periods and spaces
-            output = output.encode('ascii', errors='ignore').decode() 
+        # Remove remove non-ASCII characters but leave periods and spaces
+        output = output.encode('ascii', errors='ignore').decode() 
 
 
-        except Exception as e:
-            return str(e)
         
 
         ret[xfile] = output
