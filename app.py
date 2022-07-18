@@ -21,7 +21,6 @@ import pytesseract
 # Initiate the app
 # Flask env variables in .flaskenv
 app = Flask(__name__)
-server = app.server
 
 ## Env. Variables (Can be set in .env)
 
