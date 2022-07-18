@@ -68,6 +68,12 @@ def to_text(img_list: list) -> dict:
         img = cv2.imread(os.path.join(UPLOAD_FOLDER, xfile))
 
         img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        img = cv2.resize(img,(0,0),fx=3,fy=3)
+        img = cv2.GaussianBlur(img,(11,11),0)
+        img = cv2.medianBlur(img,9)
+        cv2.imshow('asd',img)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
             
         # To text
         output = pytesseract.image_to_string(img, config="-c tessedit"
