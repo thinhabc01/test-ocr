@@ -67,9 +67,7 @@ def to_text(img_list: list) -> dict:
         # Read image
         img = cv2.imread(os.path.join(UPLOAD_FOLDER, xfile))
 
-        img = cv2.resize(img,(0,0),fx=3,fy=3)
-        img = cv2.GaussianBlur(img,(11,11),0)
-        img = cv2.medianBlur(img,9)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             
         # To text
         output = pytesseract.image_to_string(img, lang='eng').strip()
