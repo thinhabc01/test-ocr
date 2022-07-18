@@ -78,7 +78,7 @@ def to_text(img_list: list) -> dict:
 
 
         except Exception as e:
-            return None
+            return str(e)
         
 
         ret[xfile] = output
