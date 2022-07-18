@@ -70,7 +70,7 @@ def to_text(img_list: list) -> dict:
         img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             
         # To text
-        output = pytesseract.image_to_string(img, config='outputbase digits').strip()
+        output = pytesseract.image_to_string(img, lang='eng',config='--psm 10 --oem 3 -c tessedit_char_whitelist=0123456789').strip()
 
         # Remove remove non-ASCII characters but leave periods and spaces
         output = output.encode('ascii', errors='ignore').decode() 
